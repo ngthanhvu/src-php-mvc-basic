@@ -1,12 +1,14 @@
 <?php
+require_once "controller/Controller.php";
 require_once "controller/ProductController.php";
 require_once "controller/CategoryController.php";
 require_once "router/Router.php";
 $router = new Router();
+$Controller = new Controller();
 $productController = new ProductController();
 $categoryController = new CategoryController();
 
-$router->addRoute("/", [$productController, "index"]);
+$router->addRoute("/", [$Controller, "index"]);
 
 $router->addRoute("/products", [$productController, "index"]);
 $router->addRoute("/products/create", [$productController, "create"]);
