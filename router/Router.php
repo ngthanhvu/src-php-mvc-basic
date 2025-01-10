@@ -1,13 +1,16 @@
 <?php
 
-class Router {
+class Router
+{
     private $routes = [];
 
-    public function addRoute($route, $callback) {
+    public function addRoute($route, $callback)
+    {
         $this->routes[$route] = $callback;
     }
 
-    public function dispatch() {
+    public function dispatch()
+    {
         $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
         foreach ($this->routes as $route => $callback) {
             $pattern = "#^" . preg_replace('/\{[a-zA-Z0-9_]+\}/', '([a-zA-Z0-9_]+)', $route) . "$#";
@@ -19,4 +22,3 @@ class Router {
         echo "404 Not Found";
     }
 }
-?>

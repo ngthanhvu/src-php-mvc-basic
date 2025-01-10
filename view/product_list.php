@@ -11,16 +11,16 @@
     </thead>
     <tbody>
         <?php foreach ($products as $product): ?>
-        <tr>
-            <td><?= $product['id'] ?></td>
-            <td><?= $product['name'] ?></td>
-            <td>$<?= $product['price'] ?></td>
-            <td>
-                <a href="/products/<?= $product['id'] ?>" class="btn btn-info btn-sm">View</a>
-                <a href="/products/edit/<?= $product['id'] ?>" class="btn btn-warning btn-sm">Edit</a>
-                <a href="/products/delete/<?= $product['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
-            </td>
-        </tr>
+            <tr>
+                <td><?= $product['id'] ?></td>
+                <td><?= $product['name'] ?></td>
+                <td>$<?= $product['price'] ?></td>
+                <td>
+                    <a href="/products/<?= $product['id'] ?>" class="btn btn-info">View</a>
+                    <a href="/products/edit/<?= $product['id'] ?>" class="btn btn-warning">Edit</a>
+                    <a href="/products/delete/<?= $product['id'] ?>" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
         <?php endforeach; ?>
     </tbody>
 </table>
