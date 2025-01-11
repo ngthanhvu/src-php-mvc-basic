@@ -57,4 +57,39 @@ class UserController
             renderView("view/register.php", [], "Register User");
         }
     }
+
+    public function login()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $errors = [];
+            $email = $_POST['email'] ?? '';
+            $password = $_POST['password'] ?? '';
+
+            $regex = '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/';
+            if (!preg_match($regex, $email)) {
+                $errors['email'] = 'Invalid email format';
+            } else if (empty($email)) {
+                $errors['email'] = 'Email is required';
+            }
+
+            if (empty($password)) {
+                $errors['password'] = 'Password is required';
+            }
+
+            if (!empty($errors)) {
+                renderView("view/login.php", compact('errors'), "Login User");
+            } else {
+                $user = $this->userModel->login($email, $password);
+                if ($user) {
+                    $_SESSION['user_id'] = $user['id'];
+                    header("Location: /");
+                } else {
+                    $errors['login'] = 'Invalid email or password';
+                    renderView("view/login.php", compact('errors'), "Login User");
+                }
+            }
+        } else {
+            renderView("view/login.php", [], "Login User");
+        }
+    }
 }

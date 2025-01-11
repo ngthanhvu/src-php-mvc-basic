@@ -1,12 +1,15 @@
 <?php
-class Database {
+session_start();
+class Database
+{
     private $host = "127.0.0.1";
     private $db_name = "tren_lop";
     private $username = "root";
     private $password = "";
     public $conn;
 
-    public function getConnection() {
+    public function getConnection()
+    {
         $this->conn = null;
 
         try {
@@ -19,4 +22,3 @@ class Database {
         return $this->conn;
     }
 }
-?>

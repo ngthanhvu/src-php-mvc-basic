@@ -26,10 +26,9 @@ $router->addRoute("/categories/delete/{id}", [$categoryController, "delete"]);
 
 $router->addRoute("/users", [$userController, "index"]);
 $router->addRoute("/register", [$userController, "register"]);
-$router->addRoute("/users/login", [$userController, "login"]);
+$router->addRoute("/login", [$userController, "login"]);
 $router->addRoute("/users/{id}", [$userController, "show"]);
 $router->addRoute("/users/edit/{id}", [$userController, "edit"]);
 $router->addRoute("/users/delete/{id}", [$userController, "delete"]);
 
 $router->dispatch();
-?>

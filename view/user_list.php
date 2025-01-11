@@ -1,6 +1,6 @@
 <h2>Danh sách Users</h2>
-<table class="table table-bordered table-hover">
-    <thead>
+<table class="table table-bordered table-hover table-striped text-center">
+    <thead class="table-dark">
         <tr>
             <th>ID</th>
             <th>Username</th>
